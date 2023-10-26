@@ -1,0 +1,21 @@
+<svg width="46" height="46" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22.286 15.429V8.57A2.286 2.286 0 0 0 20 6.286H4A2.286 2.286 0 0 0 1.714 8.57v6.858A2.286 2.286 0 0 0 4 17.714h16a2.286 2.286 0 0 0 2.286-2.285Z" clip-rule="evenodd"></path>
+  <path fill="currentColor" stroke="none" d="M5.143 9.714a1.143 1.143 0 1 0 0-2.285 1.143 1.143 0 0 0 0 2.285Z"></path>
+  <path fill="currentColor" stroke="none" d="M8.571 9.714a1.143 1.143 0 1 0 0-2.285 1.143 1.143 0 0 0 0 2.285Z"></path>
+  <path fill="currentColor" stroke="none" d="M12 9.714a1.143 1.143 0 1 0 0-2.285 1.143 1.143 0 0 0 0 2.285Z"></path>
+  <path fill="currentColor" stroke="none" d="M15.429 9.714a1.143 1.143 0 1 0 0-2.285 1.143 1.143 0 0 0 0 2.285Z"></path>
+  <path fill="currentColor" stroke="none" d="M18.857 9.714a1.143 1.143 0 1 0 0-2.285 1.143 1.143 0 0 0 0 2.285Z"></path>
+  <path fill="currentColor" stroke="none" d="M5.143 12a1.143 1.143 0 1 0 0-2.286 1.143 1.143 0 0 0 0 2.286Z"></path>
+  <path fill="currentColor" stroke="none" d="M8.571 12a1.143 1.143 0 1 0 0-2.286 1.143 1.143 0 0 0 0 2.286Z"></path>
+  <path fill="currentColor" stroke="none" d="M12 12a1.143 1.143 0 1 0 0-2.286A1.143 1.143 0 0 0 12 12Z"></path>
+  <path fill="currentColor" stroke="none" d="M15.429 12a1.143 1.143 0 1 0 0-2.286 1.143 1.143 0 0 0 0 2.286Z"></path>
+  <path fill="currentColor" stroke="none" d="M18.857 12a1.143 1.143 0 1 0 0-2.286 1.143 1.143 0 0 0 0 2.286Z"></path>
+  <path fill="currentColor" stroke="none" d="M5.143 14.286a1.143 1.143 0 1 0 0-2.286 1.143 1.143 0 0 0 0 2.286Z"></path>
+  <path fill="currentColor" stroke="none" d="M8.571 14.286a1.143 1.143 0 1 0 0-2.286 1.143 1.143 0 0 0 0 2.286Z"></path>
+  <path fill="currentColor" stroke="none" d="M12 14.286A1.143 1.143 0 1 0 12 12a1.143 1.143 0 0 0 0 2.286Z"></path>
+  <path fill="currentColor" stroke="none" d="M15.429 14.286a1.143 1.143 0 1 0 0-2.286 1.143 1.143 0 0 0 0 2.286Z"></path>
+  <path fill="currentColor" stroke="none" d="M18.857 14.286a1.143 1.143 0 1 0 0-2.286 1.143 1.143 0 0 0 0 2.286Z"></path>
+  <path fill="currentColor" stroke="none" d="M5.143 16.572a1.143 1.143 0 1 0 0-2.286 1.143 1.143 0 0 0 0 2.286Z"></path>
+  <path fill="currentColor" stroke="none" d="M18.857 16.572a1.143 1.143 0 1 0 0-2.286 1.143 1.143 0 0 0 0 2.286Z"></path>
+  <path d="M8.571 15.429h6.858"></path>
+</svg>

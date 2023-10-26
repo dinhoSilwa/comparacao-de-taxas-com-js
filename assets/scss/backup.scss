@@ -1,0 +1,79 @@
+
+#taxaconcorrente{
+    
+
+
+}
+
+
+#taxasumup{
+ 
+ width: 90%; height: $altura_maior;
+ margin: auto;
+ border-radius: 1rem;
+ border: 1px solid $color_borda;
+ display: flex;
+ flex-direction: column;
+ margin-bottom: 3.2rem;
+
+
+ .taxasumup-cabecalho{
+   
+   padding: 10px;
+ }
+
+ .box-sumup{
+  
+   height: 90%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   
+   
+
+   div{
+     
+     width: 30%; height: 100px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+     position: relative;
+    
+
+   & p:first-child{
+     
+    
+   }
+
+   & p:last-child{
+     font-weight: bold;
+   }
+   }
+
+  
+ }
+
+.box-sumup div:nth-child(2):before{
+content: '';
+position: absolute;
+width: 0.8px;
+height: 50px;
+background-color: $color_borda;
+top: 25%;
+left: 2px;
+
+}
+
+.box-sumup div:nth-child(3):before{
+content: '';
+position: absolute;
+width: 0.8px;
+height: 50px;
+background-color: $color_borda;
+top: 25%;
+left: 2px;
+
+}
+
+}

@@ -1,0 +1,9 @@
+<svg width="46" height="46" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M4 9.714h16c.631 0 1.143.512 1.143 1.143v4.572c0 .63-.512 1.143-1.143 1.143H4a1.143 1.143 0 0 1-1.143-1.143v-4.572c0-.631.512-1.143 1.143-1.143Z" clip-rule="evenodd"></path>
+  <path d="M6.286 10.286v2.857"></path>
+  <path d="M8.571 10.286v2.857"></path>
+  <path d="M10.857 10.286v4"></path>
+  <path d="M13.143 10.286v2.857"></path>
+  <path d="M15.429 10.286v2.857"></path>
+  <path d="M17.714 10.286v4"></path>
+</svg>

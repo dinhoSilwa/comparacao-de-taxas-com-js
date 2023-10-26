@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/scss/app.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Aplicativo de taxas</title>
+</head>
+
+<body>
+
+  <main id="conteudo-principal">
+
+
+
+    <section class="cabecalho-principal">
+      <form action="" class="cabecalho-principal__formulario">
+        <input type="text" name="" id="valor" class="cabecalho-principal__formulario-input"
+          placeholder="Digite um valor" oninput="formatarValorDigitado(this)">
+        <input type="button" value="Ok" class="cabecalho-principal__formulario-button">
+
+        <section id="tecladoVirtual">
+          <section class="tecladoVirtual-listadebotoes">
+            <div><input class="teclado-digito" type="button" value="1"><input class="teclado-digito" type="button"
+                value="2"><input class="teclado-digito" type="button" value="3"></div>
+            <div><input class="teclado-digito" type="button" value="4"><input class="teclado-digito" type="button"
+                value="5"><input class="teclado-digito" type="button" value="6"></div>
+            <div><input class="teclado-digito" type="button" value="7"><input class="teclado-digito" type="button"
+                value="8"><input class="teclado-digito" type="button" value="9"></div>
+            <div> <input class="teclado-digito" type="button" value="X"><input class="teclado-digito" type="button"
+                value="0"><input class="teclado-digito" type="button" value="ok"></div>
+          </section>
+        </section>
+      </form>
+    </section>
+
+    <nav id="navegacao-principal">
+      <ul class="navegacao-principal__lista">
+        <li class="navegacao-principal--items">Modalidades</li>
+        <li class="navegacao-principal--items">Taxas</li>
+        <li class="navegacao-principal--items">Gráficos</li>
+      </ul>
+    </nav>
+
+
+
+
+
+
+
+    <nav class="modais__menu ">
+
+
+      <ul class="modal__menu-lista classeOculta">
+        <span class="modais__menu-confirmar">OK</span>
+
+
+        <li class="modal__bloco classeOculta modalidade">
+            <button><p>Assumir Taxas</p><img src="assets/svgs/all/line/gift.svg"></button>
+            <button><p>Assumir Taxas</p><img src="assets/svgs/all/line/share-alt.svg"></button>
+        </li>
+
+
+
+        <li class="modal__bloco taxas classeOculta">
+
+
+         
+
+              <div class="taxas-inputs-row">
+              
+              
+                 <div class="modal__bloco-inputs">
+                    <input type="text" id="modal__bloco-edita-debito-sumup">
+                    <input type="text" id="modal__bloco-edita-debito-concorrente">
+                </div>
+
+                <div class="modal__bloco-botoes">
+                  <button><img src="assets/svgs/all/line/trash.svg"></button>
+                  <button><img src="assets/svgs/all/line/plus-circle.svg"></button>
+                </div>
+
+              </div>
+
+
+              <div class="taxas-inputs-row">
+              
+              
+                <div class="modal__bloco-inputs">
+                   <input type="text" id="modal__bloco-edita-debito-sumup">
+                   <input type="text" id="modal__bloco-edita-debito-concorrente">
+               </div>
+
+               <div class="modal__bloco-botoes">
+                 <button><img src="assets/svgs/all/line/trash.svg"></button>
+                 <button><img src="assets/svgs/all/line/plus-circle.svg"></button>
+               </div>
+
+             </div>
+              
+              
+              
+              <div class="taxas-inputs-row">
+              
+              
+                <div class="modal__bloco-inputs">
+                   <input type="text" id="modal__bloco-edita-debito-sumup">
+                   <input type="text" id="modal__bloco-edita-debito-concorrente">
+               </div>
+
+               <div class="modal__bloco-botoes">
+                 <button><img src="assets/svgs/all/line/trash.svg"></button>
+                 <button><img src="assets/svgs/all/line/plus-circle.svg"></button>
+               </div>
+
+             </div>
+ 
+<!-- <button class="modal__bloco"><p>Calcular</p><img src="assets/svgs/all/line/calculator.svg"></button> -->
+
+        </li>
+
+
+
+
+
+        <li class="modal__bloco graficos classeOculta">
+
+        <div>
+          <button><img src="assets/svgs/all/line/pie-quarter.svg" alt=""></button>
+          <button><img src="assets/svgs/all/line/graph-bar.svg" alt=""></button>
+          <button><img src="assets/svgs/all/line/graph-box.svg" alt=""></button>
+          <button><img src="assets/svgs/all/line/graph-increase.svg" alt=""></button>
+        </div>
+          
+        </li>
+
+
+
+
+      </ul>
+
+
+
+    </nav>
+
+    <section class="bloco-de-taxas">
+
+      <header class="bloco-de-taxas__cabecalho">
+        <p class="nomedaconcorrente">Azulzinha</p> <img src="assets/svgs/all/line/calculator.svg">
+
+      </header>
+      <section class="bloco-de-taxas__box">
+
+        <div class="taxaconcorrente debito">
+          <p>Debito</p>
+          <p class="valorConcorrente">R$0</p>
+        </div>
+
+        <div class="taxaconcorrente credito">
+          <p>Crédito</p>
+          <p class="valorConcorrente">R$0</p>
+        </div>
+
+        <div class="taxaconcorrente parcelado">
+          <p>Parcelado</p>
+          <p class="valorConcorrente">R$0</p>
+        </div>
+
+      </section>
+
+    </section>
+
+
+    <section class="bloco-de-taxas">
+
+      <header class="bloco-de-taxas__cabecalho">
+        <p class="nomedaconcorrente">Sumup</p> <img src="assets/svgs/all/line/ticket.svg">
+      </header>
+      <section class="bloco-de-taxas__box">
+
+        <div class="taxaconcorrente debito">
+          <p>Debito</p>
+          <p class="valorSumup">R$0</p>
+        </div>
+
+        <div class="taxaSumup credito">
+          <p>Crédito</p>
+          <p class="valorSumup">R$0</p>
+        </div>
+
+        <div class="taxaSumup parcelado">
+          <p>Parcelado</p>
+          <p class="valorSumup">R$0</p>
+        </div>
+
+      </section>
+
+
+
+
+
+
+
+    </section>
+
+
+
+    <section class="bloco-de-taxas">
+
+      <header class="bloco-de-taxas__cabecalho">
+        <p class="nomedaconcorrente">Diferença</p> <img src="assets/svgs/all/line/calendar-month.svg">
+      </header>
+      <section class="bloco-de-taxas__box">
+
+        <div class="taxaconcorrente debito">
+          <p>Debito</p>
+          <p class="diferenca">R$0</p>
+        </div>
+
+        <div class="taxaSumup credito">
+          <p>Crédito</p>
+          <p class="diferenca">R$0</p>
+        </div>
+
+        <div class="taxaSumup parcelado">
+          <p>Parcelado</p>
+          <p class="diferenca">R$0</p>
+        </div>
+
+      </section>
+
+
+
+
+
+
+
+    </section>
+
+
+
+
+
+
+
+
+
+  </main>
+
+</body>
+<script src="assets/javascript/app.js"></script>
+
+</html>
