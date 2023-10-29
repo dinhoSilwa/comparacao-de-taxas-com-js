@@ -62,6 +62,7 @@
   background-color: #070707;
   color: #fff;
   font-weight: 800;
+  cursor: pointer;
 }
 
 #navegacao-principal {
@@ -142,12 +143,23 @@
   align-items: center;
   box-shadow: 10px 10px 100px rgba(37, 37, 37, 0.3803921569);
 }
+.modal__menu-lista .taxas .atualizarTaxas {
+  width: 50%;
+  margin-top: 10px;
+  border-radius: 20px;
+  padding: 10px;
+  border: 2px solid #07A1D1;
+  display: flex;
+  justify-content: center;
+  flex-direction: center;
+  background-color: transparent;
+}
 .modal__menu-lista .taxas .taxas-inputs-row {
   width: 80%;
   height: 40px;
   display: flex;
   justify-content: center;
-  justify-content: space-evenly;
+  flex-direction: row;
 }
 .modal__menu-lista .taxas .taxas-inputs-row div:first-child {
   display: flex;
@@ -163,6 +175,12 @@
   text-align: center;
   font-variant-numeric: lining-nums;
   font-size: 1.2rem;
+}
+.modal__menu-lista .taxas .taxas-inputs-row div:first-child input::-moz-placeholder {
+  font-weight: 200;
+}
+.modal__menu-lista .taxas .taxas-inputs-row div:first-child input::placeholder {
+  font-weight: 200;
 }
 .modal__menu-lista .taxas .taxas-inputs-row div:first-child input:focus {
   outline: none;
@@ -234,10 +252,6 @@
 }
 .modalidade button img {
   width: 30%;
-}
-
-.classeOculta {
-  display: none !important;
 }
 
 .bloco-de-taxas {
@@ -351,4 +365,12 @@
 }
 .graficos button img {
   width: 30%;
+}
+
+.classeOculta {
+  display: none !important;
+}
+
+.Btnselecionado {
+  border: 3px solid #07A1D1 !important;
 }/*# sourceMappingURL=app.css.map */

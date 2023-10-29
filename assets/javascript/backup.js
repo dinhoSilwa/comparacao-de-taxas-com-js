@@ -1,21 +1,36 @@
+botaoCalculo.addEventListener("click",()=>{
 
+            
 
-botaoCalculo.addEventListener("click",(e)=>{
+  for(let i = 0; i < taxasumup.length; i++){
 
- e.preventDefault
+    const resultadoSumup = valoresDigitadosNoInput.valor - 
+    (valoresDigitadosNoInput.valor * (valoresTaxaSumup[i]/100))
+    const moedaBrasileiraconcorrente = resultadoSumup.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits:2 })
+    taxasumup[i].innerHTML = `R$ ${moedaBrasileiraconcorrente}`
+    valoresRecebidosSumup.push(resultadoSumup)
+    
+  }
 
- valorConcorrente.forEach((valor)=>{
-       
- for(let i = 0; i < valorConcorrente.length; i++){
+  for(let i = 0; i < valoresConcorrentes.length; i++){
 
-   const resultadoConcorrente = valoresDigitadosNoInput.valor - (valoresDigitadosNoInput.valor * (taxasConcorrentes[i]/100))
-   const FormataParaMoeda = resultadoConcorrente.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits:2 })
-   valorConcorrente[i].innerHTML = `R$ ${FormataParaMoeda}`
-   
+    const resultadoConcorrente = valoresDigitadosNoInput.valor - 
+    (valoresDigitadosNoInput.valor * (valoresConcorrentes[i]/100))
+
+    const moedaBrasileiraSumup = resultadoConcorrente.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+    taxaconcorrentes[i].innerHTML = `R$ \n ${moedaBrasileiraSumup}`
+
+    valoresRecebidosConcorrentes.push(resultadoConcorrente)
+
+    const resultadoDiferenca = valoresRecebidosSumup[i] - valoresRecebidosConcorrentes[i]
+    const resultadoDiferencaMoeda = resultadoDiferenca.toLocaleString('pt-BR', { minimumFractionDigits:2 , maximumFractionDigits:2 })
+    
+    diferenca[i].innerHTML = `R$ ${resultadoDiferencaMoeda}`
+
+    console.log(valoresDigitadosNoInput.valor)
+
+  }
+
   
-
- }
-
-})
 
 })

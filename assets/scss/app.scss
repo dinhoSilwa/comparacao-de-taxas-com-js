@@ -87,6 +87,7 @@ $altura_media: 5rem;
       background-color: #070707;
       color: $color_light;
       font-weight: 800;
+      cursor: pointer;
 
 
 
@@ -168,6 +169,7 @@ $altura_media: 5rem;
   display: flex;
   justify-content: center;
   align-items: center;
+ 
 
   .modais__menu-confirmar {
     top: 10px;
@@ -186,7 +188,7 @@ $altura_media: 5rem;
     font-weight: bold;
     color: #07A1D1;
     border: 2px solid #cccccc31;
-
+    // botão de fechar o modal
 
   }
 
@@ -201,38 +203,55 @@ $altura_media: 5rem;
     display: flex;
     justify-content: center;
     flex-direction: column;
-
+  
     align-items: center;
   }
 
   @mixin rowsDeInputs () {
     width: 80%;
     height: 40px;
-
+    
     display: flex;
     justify-content: center;
-    justify-content: space-evenly;
+    flex-direction: row;
+    
   }
-
-
-
 
 
   .taxas {
     @include rows;
     box-shadow: 10px 10px 100px #25252561;
 
+
+    .atualizarTaxas{
+     
+      width: 50%;
+     margin-top: 10px;
+      border-radius: 20px;
+      padding: 10px;
+      border: 2px solid #07A1D1;
+      display: flex;
+      justify-content: center;
+      flex-direction: center;
+      background-color: transparent;
+
+
+      
+    }
+
     .taxas-inputs-row {
 
       @include rowsDeInputs;
+      
 
 
       & div:first-child {
 
-
+        
         display: flex;
 
         align-items: center;
+     
 
 
 
@@ -246,6 +265,11 @@ $altura_media: 5rem;
           text-align: center;
           font-variant-numeric: lining-nums;
           font-size: 1.2rem;
+          
+          &::placeholder{
+            
+            font-weight: 200;
+          }
 
           &:focus {
             outline: none;
@@ -313,6 +337,7 @@ $altura_media: 5rem;
   justify-content: center;
   align-items: center;
   box-shadow: 10px 10px 100px #25252561;
+ 
   
   button{
     background-color: $color_light;
@@ -350,10 +375,6 @@ $altura_media: 5rem;
   
   }
 
-}
-
-.classeOculta {
-  display: none !important;
 }
 
 
@@ -402,12 +423,32 @@ $altura_media: 5rem;
 
   }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   .bloco-de-taxas__box {
 
     height: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
+   
 
 
     & div:nth-child(2)::before {
@@ -534,3 +575,10 @@ $altura_media: 5rem;
   }
 }
 
+.classeOculta {
+  display: none !important;
+}
+.Btnselecionado{
+  border: 3px solid #07A1D1 !important;
+  
+}

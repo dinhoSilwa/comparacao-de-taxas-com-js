@@ -40,9 +40,9 @@
 
     <nav id="navegacao-principal">
       <ul class="navegacao-principal__lista">
-        <li class="navegacao-principal--items">Modalidades</li>
-        <li class="navegacao-principal--items">Taxas</li>
-        <li class="navegacao-principal--items">Gráficos</li>
+        <li class="navegacao-principal--items mod" data-item="Modalidades">Modalidades</li>
+        <li class="navegacao-principal--items" data-item="Taxas">Taxas</li>
+        <li class="navegacao-principal--items" data-item="Gráficos">Gráficos</li>
       </ul>
     </nav>
 
@@ -60,9 +60,11 @@
 
 
         <li class="modal__bloco classeOculta modalidade">
-            <button><p>Assumir Taxas</p><img src="assets/svgs/all/line/gift.svg"></button>
-            <button><p>Assumir Taxas</p><img src="assets/svgs/all/line/share-alt.svg"></button>
+            <button class="btnCalculo ass" data-modalidade="AssTaxas"><p>Assumir Taxas</p><img src="assets/svgs/all/line/gift.svg" data-modalidade="AssTaxas" class="btnCalculo"></button>
+            <button class="btnCalculo rep" data-modalidade="RepTaxas"><p>Repassar Taxas</p><img src="assets/svgs/all/line/share-alt.svg" data-modalidade="RepTaxas"class="btnCalculo"></button>
         </li>
+
+        
 
 
 
@@ -75,13 +77,12 @@
               
               
                  <div class="modal__bloco-inputs">
-                    <input type="text" id="modal__bloco-edita-debito-sumup">
-                    <input type="text" id="modal__bloco-edita-debito-concorrente">
+                    <input type="text" id="modal__bloco-edita-debito-sumup" placeholder="Debito">
+                    <input type="text" id="modal__bloco-edita-debito-concorrente" placeholder="Debito">
                 </div>
 
                 <div class="modal__bloco-botoes">
                   <button><img src="assets/svgs/all/line/trash.svg"></button>
-                  <button><img src="assets/svgs/all/line/plus-circle.svg"></button>
                 </div>
 
               </div>
@@ -91,34 +92,35 @@
               
               
                 <div class="modal__bloco-inputs">
-                   <input type="text" id="modal__bloco-edita-debito-sumup">
-                   <input type="text" id="modal__bloco-edita-debito-concorrente">
+                   <input type="text" id="modal__bloco-edita-debito-sumup" placeholder="Crédito">
+                   <input type="text" id="modal__bloco-edita-debito-concorrente" placeholder="Crédito">
                </div>
 
                <div class="modal__bloco-botoes">
                  <button><img src="assets/svgs/all/line/trash.svg"></button>
-                 <button><img src="assets/svgs/all/line/plus-circle.svg"></button>
+                
                </div>
 
              </div>
               
               
               
-              <div class="taxas-inputs-row">
+              <div class="taxas-inputs-row" >
               
               
                 <div class="modal__bloco-inputs">
-                   <input type="text" id="modal__bloco-edita-debito-sumup">
-                   <input type="text" id="modal__bloco-edita-debito-concorrente">
+                   <input type="text" id="modal__bloco-edita-debito-sumup" placeholder="Parcelado">
+                   <input type="text" id="modal__bloco-edita-debito-concorrente" placeholder="Parcelado">
                </div>
 
                <div class="modal__bloco-botoes">
                  <button><img src="assets/svgs/all/line/trash.svg"></button>
-                 <button><img src="assets/svgs/all/line/plus-circle.svg"></button>
                </div>
 
+             
+
              </div>
- 
+             <button class="atualizarTaxas">Atualizar Taxas </button>
 <!-- <button class="modal__bloco"><p>Calcular</p><img src="assets/svgs/all/line/calculator.svg"></button> -->
 
         </li>
