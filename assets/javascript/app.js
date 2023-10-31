@@ -10,7 +10,7 @@ const taxasumup = document.querySelectorAll(".valorSumup")
 const taxaconcorrentes = document.querySelectorAll(".valorConcorrente")
 const diferenca = document.querySelectorAll(".diferenca")
 const tecladoVirtual = document.querySelectorAll(".teclado-digito")
-const nomedaconcorrente = document.querySelectorAll(".nomedaconcorrente")
+const nomedaconcorrente = document.querySelector(".nomedaconcorrente")
 
 
 /// variáveis para a manipulação do menu principal 
@@ -18,6 +18,7 @@ const nomedaconcorrente = document.querySelectorAll(".nomedaconcorrente")
 const navegacao = document.querySelector(".navegacao-principal__lista")
 const modalBLocos = [...document.querySelectorAll(".modal__bloco")]
 const menuItems = ["Modalidades", "Taxas", "Gráficos"]
+const nomedaconcorrenteTexto = ["Verdinha", "Amarelinha", "Vermelhinha","Azulzinha", ]
 const modalMenu = document.querySelector(".modal__menu-lista")
 
 const botaodeOk = document.querySelector(".modais__menu-confirmar")
@@ -26,11 +27,21 @@ let modalidadeClicada = ["assumir"]
 
 
 // armazenar valor da taxa da concorrência
-const valoresConcorrentes = [1.89, 4.99, 21.90]
+const valoresConcorrentes = [0,0,0]
 const valoresTaxaSumup = [1.25, 3.10, 12.35]
+
+const taxasDaAzulzinha = [1.99, 4.98, 20]
+const taxasDaAmarelinha = [1.89, 4.99, 30]
+const taxasDaVerdinha = [1.89, 3.33, 40]
+const taxasDaVermelhinha = [0.99, 3.82, 30]
 
 let valoresRecebidosSumup = []
 let valoresRecebidosConcorrentes = []
+
+
+/// armazenar botoes de icones
+
+const btnIconesBlocos = document.querySelectorAll(".btnIcones-bloco")
 
 
 let valoresDigitadosNoInput = { valor: "" }
@@ -212,3 +223,66 @@ function repassarTaxas() {
 
 
 }
+let contador = 1; // Mova a declaração do contador para dentro do escopo da função de evento
+btnIconesBlocos.forEach((botoesDEicones) => {
+ 
+
+
+  botoesDEicones.addEventListener("click", (e) => {
+    const iconeClicado = e.target;
+   
+
+
+    if (iconeClicado.classList.contains("maquineta")) {
+      nomedaconcorrente.innerHTML = nomedaconcorrenteTexto[contador];
+      
+      contador++;
+      if (contador > 3) {
+        contador = 0;
+      }
+      adcionarTaxaDaConcorrentes(nomedaconcorrente)
+    }
+  });
+});
+
+function adcionarTaxaDaConcorrentes(nomedaconcorrente){
+  const nomeAtual = nomedaconcorrente.textContent
+  if(nomeAtual === "Azulzinha"){
+
+
+    for(let i = 0; i < nomedaconcorrenteTexto.length; i++){
+      taxaconcorrentes[i] = taxasDaAzulzinha[i]
+      console.log(valoresConcorrentes)
+      console.log(contador)
+    }
+
+  }else if(nomeAtual === "Amarelinha"){
+
+    for(let i = 0; i < nomedaconcorrenteTexto.length; i++){
+      taxaconcorrentes[i] = taxasDaAmarelinha[i]
+      console.log(valoresConcorrentes)
+      console.log(contador)
+    }
+
+  }else if(nomeAtual === "Verdinha"){
+
+    for(let i = 0; i < nomedaconcorrenteTexto.length; i++){
+      taxaconcorrentes[i] = taxasDaVerdinha[i]
+      console.log(valoresConcorrentes)
+      console.log(contador)
+    }
+
+  }else if(nomeAtual === "Vermelhinha"){
+
+    for(let i = 0; i < nomedaconcorrenteTexto.length; i++){
+      taxaconcorrentes[i] = taxasDaVermelhinha[i]
+      console.log(valoresConcorrentes)
+      console.log(contador)
+    }
+
+  }
+ console.log(nomeAtual)
+
+}
+
+
