@@ -373,4 +373,8 @@
 
 .Btnselecionado {
   border: 3px solid #07A1D1 !important;
+}
+
+.BtnmaquinetaAtual {
+  cursor: pointer;
 }/*# sourceMappingURL=app.css.map */

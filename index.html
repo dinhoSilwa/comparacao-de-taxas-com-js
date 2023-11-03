@@ -13,6 +13,8 @@
 
 <body>
 
+
+
   <main id="conteudo-principal">
 
 
@@ -20,7 +22,7 @@
     <section class="cabecalho-principal">
       <form action="" class="cabecalho-principal__formulario">
         <input type="text" name="" id="valor" class="cabecalho-principal__formulario-input"
-          placeholder="Digite um valor" oninput="formatarValorDigitado(this)">
+          placeholder="Digite um valor" oninput="formatarValorDigitado(this)" required>
         <input type="button" value="Ok" class="cabecalho-principal__formulario-button">
 
         <section id="tecladoVirtual">
@@ -152,7 +154,7 @@
     <section class="bloco-de-taxas">
 
       <header class="bloco-de-taxas__cabecalho">
-        <p class="nomedaconcorrente">Azulzinha</p> <img src="assets/svgs/all/line/calculator.svg">
+        <p class="nomedaconcorrente">Azulzinha</p> <img src="assets/svgs/all/line/calculator.svg" class="BtnmaquinetaAtual" onclick="clickNoIcone(this)">
 
       </header>
       <section class="bloco-de-taxas__box">
