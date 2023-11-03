@@ -1,6 +1,9 @@
 const BtnIconemaquinetaAtual = document.querySelectorAll(".BtnmaquinetaAtual") // icone de maquinetas
 const botaoDeCalculoPrincipal = document.querySelector(".cabecalho-principal__formulario-button")
-const taxasPrincipais = [1.2,3.10,12]
+const taxasPrincipais = [1,3,12]
+const taxasPrincipaisAtuais = []
+const taxasAtuaisConcorrentes = []
+
 
 const concorrenteAtual = ["Amarelinha", "Verdinha", "Vermelhinha", "Azulzinha"]
 
@@ -66,10 +69,6 @@ iconeClicado.innerHTML = `${concorrenteAtual[indiceContador]}`
 exibirCalculo(concorrenteAtual[indiceContador])
   indiceContador++
 
-
-  
-
-
 }
     
 
@@ -83,41 +82,95 @@ function exibirCalculo(MaquinetaConcorrenteAtual){
   const azulzinha =  MaquinetaConcorrenteAtual === concorrenteAtual[3]
 
   if(amarelinha){
-    const calAmarelinha = new definirTaxas(valorInput,taxasPrincipais,txAmarelinha)
-    calAmarelinha.Taxasprincipal()
+    const calAmarelinha = new DefinirTaxas(valorInput,taxasPrincipaisAtuais,txAmarelinha)
+    calAmarelinha.TaxasConcorrencia()
+    calAmarelinha.taxasPrincipais()
     console.log("amarelo")
     
   }
   if(verdinha){
-    const calVerdinha = new definirTaxas(valorInput,taxasPrincipais,txVerdinha)
-    calVerdinha.Taxasprincipal()
+    const calVerdinha = new DefinirTaxas(valorInput,taxasPrincipaisAtuais,txVerdinha)
+    calVerdinha.TaxasConcorrencia()
+    calVerdinha.taxasPrincipais()
     console.log("verde")
   }
   if(vermelhinha){
-    const calVermelhinha =  new definirTaxas(valorInput,taxasPrincipais,txVermelhinha)
-    calVermelhinha.Taxasprincipal()
+    const calVermelhinha =  new DefinirTaxas(valorInput,taxasPrincipaisAtuais,txVermelhinha)
+    calVermelhinha.TaxasConcorrencia()
+    calVermelhinha.taxasPrincipais()
     console.log("vermelho")
   }
   if(azulzinha){
-    const calAzulzinha = new definirTaxas(valorInput,taxasPrincipais,txAzulzinha)
-    calAzulzinha.Taxasprincipal()
+    const calAzulzinha = new DefinirTaxas(valorInput,taxasPrincipaisAtuais,txAzulzinha)
+    calAzulzinha.TaxasConcorrencia()
+     calAzulzinha.taxasPrincipais()
     console.log("azul")
+    
   }
 }
 
-function definirTaxas(valorInput,Principais,concorrente){
+function DefinirTaxas(valorInput,Principais,concorrente){
 
   this.valor = valorInput;
   this.Principais = Principais;
   this.concorrente = concorrente;
-  this.Taxasprincipal = function(){
+
+
+  this.TaxasConcorrencia = function(){
+    
+    taxasAtuaisConcorrentes.splice(0, taxasAtuaisConcorrentes.length);
+
  
    for(let i = 0; i < concorrente.length; i++){
-    const resultadoPrincipal = (valorInput.valor)/100 - parseFloat(concorrente[i])
-    const concorrenteCalculado = new mostrarTaxas (resultadoPrincipal)
-    concorrenteCalculado.mostrarValores()
+    const resultadoConcorrente = (valorInput.valor)/100 - parseFloat(concorrente[i])
+    
+    
+    taxasAtuaisConcorrentes.push(moedaBrasileira(resultadoConcorrente))
+    
+    // const concorrenteCalculado = new mostrarTaxas (resultadoPrincipal)
+    // concorrenteCalculado.mostrarValores()
+    const valorConcorrente = document.querySelectorAll(".valorConcorrente")
+    let count = -1;
+    valorConcorrente.forEach((valorC)=>{
+      count++
+      
+      valorC.innerHTML = `${taxasAtuaisConcorrentes[count]}`
+    })
+
    }
 
   }
+/// calculo das taxas da sumup
+  this.taxasPrincipais = function(){
+
+    
+    taxasPrincipaisAtuais.splice(0, taxasPrincipaisAtuais.length);
+
+ 
+   for(let i = 0; i < taxasPrincipais.length; i++){
+    
+    const resultadoPrincipal = (valorInput.valor)/100 - parseFloat(taxasPrincipais[i])
+    taxasPrincipaisAtuais.push(moedaBrasileira(resultadoPrincipal))
+
+   
+  
+
+    // const concorrenteCalculado = new mostrarTaxas (resultadoPrincipal)
+    // concorrenteCalculado.mostrarValores()
+    const valorSumup = document.querySelectorAll(".valorSumup")
+    let count2 = -1;
+    valorSumup.forEach((valorS)=>{
+      count2++
+      
+      valorS.innerHTML = `${taxasPrincipaisAtuais[count2]}`
+    })
+
+    
+
+   }
+    
+  }
+
+  
 
 }
