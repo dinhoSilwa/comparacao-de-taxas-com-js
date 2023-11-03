@@ -1,214 +1,176 @@
-/// variáveis para a função de formatação para moeda brasileira
-
-const botaoCalculo = document.querySelector(".cabecalho-principal__formulario-button")
-const input = document.querySelector(".cabecalho-principal__formulario-input")
-const btnRepassarTaxas = document.querySelectorAll(".btnCalculo")
-
-
-// variáveis para a manipulação e soma das taxas
-const taxasumup = document.querySelectorAll(".valorSumup")
-const taxaconcorrentes = document.querySelectorAll(".valorConcorrente")
-const diferenca = document.querySelectorAll(".diferenca")
-const tecladoVirtual = document.querySelectorAll(".teclado-digito")
-const nomedaconcorrente = document.querySelectorAll(".nomedaconcorrente")
+const BtnIconemaquinetaAtual = document.querySelectorAll(".BtnmaquinetaAtual") // icone de maquinetas
+const botaoDeCalculoPrincipal = document.querySelector(".cabecalho-principal__formulario-button")
+const taxasPrincipais = [1,3,12]
+const taxasPrincipaisAtuais = []
+const taxasAtuaisConcorrentes = []
 
 
-/// variáveis para a manipulação do menu principal 
-
-const navegacao = document.querySelector(".navegacao-principal__lista")
-const modalBLocos = [...document.querySelectorAll(".modal__bloco")]
-const menuItems = ["Modalidades", "Taxas", "Gráficos"]
-const modalMenu = document.querySelector(".modal__menu-lista")
-
-const botaodeOk = document.querySelector(".modais__menu-confirmar")
-let botaoClose = false;
-let modalidadeClicada = ["assumir"]
+const concorrenteAtual = ["Amarelinha", "Verdinha", "Vermelhinha", "Azulzinha"]
 
 
-// armazenar valor da taxa da concorrência
-const valoresConcorrentes = [1.89, 4.99, 21.90]
-const valoresTaxaSumup = [1.25, 3.10, 12.35]
+// valor digitado no input que foi armazenado
+const valorInput = {valor:0}
 
-let valoresRecebidosSumup = []
-let valoresRecebidosConcorrentes = []
-
-
-let valoresDigitadosNoInput = { valor: "" }
-
-
-const formatarValorDigitado = (valorDigitadoNoInput) => {
-
-  const valorOriginalDigitado = valorDigitadoNoInput.value
-  const formatador = valorOriginalDigitado.replace(/\D/g, "")
-  // variavel que retira valores não númericos
-  const valorParaMoedaBR = (parseFloat(formatador) / 100).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-  valoresDigitadosNoInput.valor = (parseFloat(formatador) / 100)
-  valorDigitadoNoInput.value = `R$ ${valorParaMoedaBR}`
-
-  console.log(formatador)
+/// taxas das maquinetas c
+const txAzulzinha = [1.99,4.98,17.28]
+const txAmarelinha = [1.99,4.99,17.28]
+const txVerdinha = [1.29,3.49,17.99]
+const txVermelhinha = [1.09,3.82,15]
 
 
 
-
+function formatarValorDigitado(valor) {
+  const valorDigitadoOriginal = valor.value
+  const formatador = valorDigitadoOriginal.replace(/\D/g,"")
+ valorInput.valor = parseFloat(formatador)
+  valor.value = moedaBrasileira(parseFloat(formatador/100))
+ 
+  
+ 
+  
 }
 
-btnRepassarTaxas.forEach((botaoCalculoClicado) => {
-  botaoCalculoClicado.addEventListener("click", (e) => {
-
-    const modalidade = botaoCalculoClicado.getAttribute("data-modalidade")
-      console.log(modalidade)
-
-
-
-
-
-
-    if (modalidade === "AssTaxas") {
-        AssumirTaxas()
-          botaoCalculoClicado.parentNode.querySelector(".ass").classList.add("Btnselecionado")
-          
-            botaoCalculoClicado.parentNode.querySelector(".rep").classList.remove("Btnselecionado")
-              const modalidade = document.querySelector(".mod").textContent = `Assumir`
-              modalidadeClicada = []
-              modalidadeClicada.push("assumir")
-              console.log(modalidadeClicada)
-
-
-
-    } else if (modalidade === "RepTaxas") {
-      repassarTaxas()
-          botaoCalculoClicado.parentNode.querySelector(".rep").classList.add("Btnselecionado")
-
-             botaoCalculoClicado.parentNode.querySelector(".ass").classList.remove("Btnselecionado")
-                    const modalidade = document.querySelector(".mod").textContent = `Repassar`
-                    modalidadeClicada = []
-                    modalidadeClicada.push("repassar")
-                    console.log(modalidadeClicada)
-    }
-
-  })
+const moedaBrasileira = value => { /// função que converte o valor digitado para moeda BRasileira
+  let options = {
+    style: 'currency',
+    currency: 'BRL',
+    minimumFractionDigits: 2, 
+    maximumFractionDigits: 2, 
+  };
+  return value.toLocaleString('pt-BR', options);
+}
 
 
 
 
 
-})
-
-botaoCalculo.addEventListener("click", (e) => {
+botaoDeCalculoPrincipal.addEventListener("click",()=>{
+  const nomeConcorrente = document.querySelector(".nomedaconcorrente")
+  const iconeClicado = nomeConcorrente.parentNode.querySelector(".nomedaconcorrente")
+  exibirCalculo(concorrenteAtual[3])
 
   
-  if(modalidadeClicada[0] === "" || modalidadeClicada[0] === "assumir"){
-
-      AssumirTaxas()
-
-  }else if(modalidadeClicada[0] === "repassar")
-
-repassarTaxas()
-
 })
 
 
+let indiceContador = 0;
+let clique = []
+
+    
+function clickNoIcone(icone){
 
 
+  const iconeClicado = icone.parentNode.querySelector(".nomedaconcorrente")
+  const MaquinetaConcorrenteAtual = iconeClicado.textContent
 
+  if(indiceContador > 3) indiceContador = 0
 
-navegacao.addEventListener("click", (elementoClicado) => {
-
-
-
-  const textoItemClicado = elementoClicado.target.getAttribute("data-item")
-
-  modalMenu.classList.remove("classeOculta")
-
-
-  for (let i = 0; i < menuItems.length; i++) {
-
-    if (textoItemClicado === menuItems[i]) {
-      modalBLocos[i].classList.remove("classeOculta")
-    } else {
-      modalBLocos[i].classList.add("classeOculta")
-    }
-  }
-})
-
-botaodeOk.addEventListener("click", () => { botaoClose = true; modalMenu.classList.add("classeOculta") })
-
-
-
-
-function AssumirTaxas() {
-
-  for (let i = 0; i < taxasumup.length; i++) {
-
-    const resultadoSumup = valoresDigitadosNoInput.valor -
-      (valoresDigitadosNoInput.valor * (valoresTaxaSumup[i] / 100))
-    const moedaBrasileiraconcorrente = resultadoSumup.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-    taxasumup[i].innerHTML = `R$ ${moedaBrasileiraconcorrente}`
-    valoresRecebidosSumup.push(resultadoSumup)
-
-  }
-
-  for (let i = 0; i < valoresConcorrentes.length; i++) {
-
-    const resultadoConcorrente = valoresDigitadosNoInput.valor -
-      (valoresDigitadosNoInput.valor * (valoresConcorrentes[i] / 100))
-
-    const moedaBrasileiraSumup = resultadoConcorrente.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-    taxaconcorrentes[i].innerHTML = `R$ \n ${moedaBrasileiraSumup}`
-
-    valoresRecebidosConcorrentes.push(resultadoConcorrente)
-
-    const resultadoDiferenca = valoresRecebidosSumup[i] - valoresRecebidosConcorrentes[i]
-    const resultadoDiferencaMoeda = resultadoDiferenca.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-
-    diferenca[i].innerHTML = `R$ ${resultadoDiferencaMoeda}`
-
-    console.log(valoresDigitadosNoInput.valor)
-
-  }
-
+iconeClicado.innerHTML = `${concorrenteAtual[indiceContador]}`
+exibirCalculo(concorrenteAtual[indiceContador])
+  indiceContador++
 
 }
+    
+
+ 
+
+function exibirCalculo(MaquinetaConcorrenteAtual){
+ 
+  const amarelinha = MaquinetaConcorrenteAtual === concorrenteAtual[0]
+  const verdinha = MaquinetaConcorrenteAtual === concorrenteAtual[1]
+  const vermelhinha  = MaquinetaConcorrenteAtual === concorrenteAtual[2]
+  const azulzinha =  MaquinetaConcorrenteAtual === concorrenteAtual[3]
+
+  if(amarelinha){
+    const calAmarelinha = new DefinirTaxas(valorInput,taxasPrincipaisAtuais,txAmarelinha)
+    calAmarelinha.TaxasConcorrencia()
+    calAmarelinha.taxasPrincipais()
+    console.log("amarelo")
+    
+  }
+  if(verdinha){
+    const calVerdinha = new DefinirTaxas(valorInput,taxasPrincipaisAtuais,txVerdinha)
+    calVerdinha.TaxasConcorrencia()
+    calVerdinha.taxasPrincipais()
+    console.log("verde")
+  }
+  if(vermelhinha){
+    const calVermelhinha =  new DefinirTaxas(valorInput,taxasPrincipaisAtuais,txVermelhinha)
+    calVermelhinha.TaxasConcorrencia()
+    calVermelhinha.taxasPrincipais()
+    console.log("vermelho")
+  }
+  if(azulzinha){
+    const calAzulzinha = new DefinirTaxas(valorInput,taxasPrincipaisAtuais,txAzulzinha)
+    calAzulzinha.TaxasConcorrencia()
+     calAzulzinha.taxasPrincipais()
+    console.log("azul")
+    
+  }
+}
+
+function DefinirTaxas(valorInput,Principais,concorrente){
+
+  this.valor = valorInput;
+  this.Principais = Principais;
+  this.concorrente = concorrente;
 
 
+  this.TaxasConcorrencia = function(){
+    
+    taxasAtuaisConcorrentes.splice(0, taxasAtuaisConcorrentes.length);
 
-function repassarTaxas() {
+ 
+   for(let i = 0; i < concorrente.length; i++){
+    const resultadoConcorrente = (valorInput.valor)/100 - parseFloat(concorrente[i])
+    
+    
+    taxasAtuaisConcorrentes.push(moedaBrasileira(resultadoConcorrente))
+    
+    // const concorrenteCalculado = new mostrarTaxas (resultadoPrincipal)
+    // concorrenteCalculado.mostrarValores()
+    const valorConcorrente = document.querySelectorAll(".valorConcorrente")
+    let count = -1;
+    valorConcorrente.forEach((valorC)=>{
+      count++
+      
+      valorC.innerHTML = `${taxasAtuaisConcorrentes[count]}`
+    })
 
-  for (let i = 0; i < taxasumup.length; i++) {
-
-    const resultadoSumup = valoresDigitadosNoInput.valor / (1 - (valoresTaxaSumup[i] / 100))
-
-
-    // valoresDigitadosNoInput.valor - 
-    // (valoresDigitadosNoInput.valor * (valoresTaxaSumup[i]/100))
-
-
-    const moedaBrasileiraconcorrente = resultadoSumup.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-    taxasumup[i].innerHTML = `R$ ${moedaBrasileiraconcorrente}`
-    valoresRecebidosSumup.push(resultadoSumup)
+   }
 
   }
+/// calculo das taxas da sumup
+  this.taxasPrincipais = function(){
 
-  for (let i = 0; i < valoresConcorrentes.length; i++) {
+    
+    taxasPrincipaisAtuais.splice(0, taxasPrincipaisAtuais.length);
 
-    const resultadoConcorrente = valoresDigitadosNoInput.valor / (1 - (valoresConcorrentes[i] / 100))
+ 
+   for(let i = 0; i < taxasPrincipais.length; i++){
+    
+    const resultadoPrincipal = (valorInput.valor)/100 - parseFloat(taxasPrincipais[i])
+    taxasPrincipaisAtuais.push(moedaBrasileira(resultadoPrincipal))
 
-    // valoresDigitadosNoInput.valor - 
-    // (valoresDigitadosNoInput.valor * (valoresConcorrentes[i]/100))
+   
+  
 
-    const moedaBrasileiraSumup = resultadoConcorrente.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-    taxaconcorrentes[i].innerHTML = `R$ \n ${moedaBrasileiraSumup}`
-
-    valoresRecebidosConcorrentes.push(resultadoConcorrente)
-
-    const resultadoDiferenca = valoresRecebidosConcorrentes[i] - valoresRecebidosSumup[i]
-    const resultadoDiferencaMoeda = resultadoDiferenca.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-
-    diferenca[i].innerHTML = `R$ ${resultadoDiferencaMoeda}`
+    // const concorrenteCalculado = new mostrarTaxas (resultadoPrincipal)
+    // concorrenteCalculado.mostrarValores()
+    const valorSumup = document.querySelectorAll(".valorSumup")
+    let count2 = -1;
+    valorSumup.forEach((valorS)=>{
+      count2++
+      
+      valorS.innerHTML = `${taxasPrincipaisAtuais[count2]}`
+    })
 
     
 
+   }
+    
   }
 
+  
 
 }
